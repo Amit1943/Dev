@@ -1,3 +1,7 @@
 https://www.monitis.com/blog/25-apache-performance-tuning-tips/
 https://mariadb.com/kb/en/mycnf-128-gb-ram-server/
+ mysqladmin -u root -prJqP8ina20 -i 5 processlis
+ sudo df -h /var/ | sort -rh | head -5
+ https://realpython.com/free-courses-march-2020
+
 
