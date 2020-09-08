@@ -1,1 +1,3 @@
 https://www.monitis.com/blog/25-apache-performance-tuning-tips/
+https://mariadb.com/kb/en/mycnf-128-gb-ram-server/
+
