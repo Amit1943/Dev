@@ -3,5 +3,68 @@ https://mariadb.com/kb/en/mycnf-128-gb-ram-server/
  mysqladmin -u root -prJqP8ina20 -i 5 processlis
  sudo df -h /var/ | sort -rh | head -5
  https://realpython.com/free-courses-march-2020
+ 
+ Tip #1: Index All Columns Used in 'where', 'order by', and 'group by' Clauses
+ Example, consider a case where you are running the below query with the 'first_name' and 'last_name' indexed:
+
+mysql> select * from students where first_name like  'Ade%'  or last_name like 'Ade%' ;
+The query above can run far much slower compared to the below query which uses a union operator merge the results of 2 separate fast queries that takes advantage of the indexes.
+
+mysql> select  from students where first_name like  'Ade%'  union all select  from students where last_name like  
+Avoid Null Values
+Null is the absence of any value in a column. You should avoid this kind of values whenever possible because they can harm your database results. For instance, if you want to get the sum of all orders in a database but a particular order record has a null amount, the expected result might misbehave unless you use MySQL 'ifnull' statement to return alternative value if a record is null.
+
+In some cases, you might need to define a default value for a field if records don't have to include a mandatory value for that particular column/field.
+
+Avoid Too Many Columns
+Wide tables can be extremely expensive and require more CPU time to process. If possible, don't go above a hundred unless your business logic specifically calls for this.
+
+Instead of creating one wide table, consider splitting it apart in to logical structures. For instance, if you are creating a customer table but you realize a customer can have multiple addresses, it is better to create a separate table for holding customers addresses that refer back to the customers table using the 'customer_id' field.
+
+Optimize Joins
+Always include fewer tables in your join statements. An SQL statement with poorly designed pattern that involves a lot of joins may not work well. A rule of thumb is to have utmost a dozen joins for each query.
+
+Tip 7: MySQL Query Caching
+If your website or application performs a lot of select queries (e.g. WordPress), you should take advantage of MySQL query caching feature. This will speed up performance when read operations are conducted.
+
+The technology works by caching the select query alongside the resulting data set. This makes the query run faster since they are fetched from memory if they are executed more than once. However, if your application updates the table frequently, this will invalidate any cached query and result set.
+
+You can check if your MySQL server has query cache enabled by running the command below:
+
+mysql> show variables like 'have_query_cache';
++------------------+-------+
+| Variable_name    | Value |
++------------------+-------+
+| have_query_cache | YES   |
++------------------+-------+
+1 row in <b>set</b> (0.00 sec)
+Setting the MySQL Server Query Cache
+You can set the MySQL query cache values by editing the configuration file ('/etc/mysql/my.cnf' or '/etc/mysql/mysql.conf.d/mysqld.cnf'). This will depend on your MySQL installation. Don't set a very large query cache size value because this will degrade the MySQL server due to cached overhead and locking. Values in the range of tens of megabytes are recommended.
+
+To check the current value, use the command below:
+
+mysql> show variables like 'query_cache_%' ;
++------------------------------+----------+
+| Variable_name                | Value    |
++------------------------------+----------+
+| query_cache_limit            | 1048576  |
+| query_cache_min_res_unit     | 4096     |
+| query_cache_size             | 16777216 |
+| query_cache_type             | OFF      |
+| query_cache_wlock_invalidate | OFF      |
++------------------------------+----------+
+5 rows in <b>set</b> (0.00 sec)
+Then to adjust the values, include the following on the MySQL configuration file:
+
+query_cache_type=1
+query_cache_size = 10M
+query_cache_limit=256k
+You can adjust the above values according to your server needs.
+
+The directive 'query_cache_type=1' turns MySQL caching on if it was turned off by default.
+
+The default 'query_cache_size' is 1MB and like we said above a value a range of around 10 MB is recommended. Also, the value must be over 40 KB otherwise MySQL server will throw a warning, "Query cache failed to set size".
+
+The default 'query_cache_limit' is also 1MB. This value controls the amount of individual query result that can be can be cached.
 
 
