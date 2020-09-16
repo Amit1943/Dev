@@ -66,5 +66,20 @@ The directive 'query_cache_type=1' turns MySQL caching on if it was turned off b
 The default 'query_cache_size' is 1MB and like we said above a value a range of around 10 MB is recommended. Also, the value must be over 40 KB otherwise MySQL server will throw a warning, "Query cache failed to set size".
 
 The default 'query_cache_limit' is also 1MB. This value controls the amount of individual query result that can be can be cached.
+================
+import boto3
 
+# Create an S3 client
+s3 = boto3.client(
+    's3',
+    aws_access_key_id='KEY',
+    aws_secret_access_key='SECRET'
+)
+
+filename = '/path/to/file'
+bucket_name = 'BUCKET'
+
+# Uploads the given file using a managed uploader, which will split up large
+# files automatically and upload parts in parallel.
+s3.upload_file(filename, bucket_name, filename)
 
