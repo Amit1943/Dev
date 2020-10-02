@@ -1,3 +1,18 @@
+useradd -g sftpusers -s /sbin/nologin BlueFinR
+
+passwd BlueFinR
+
+Prism@123$%^0
+
+chown -R root /home/BlueFinR
+
+chmod -R 755 /home/BlueFinR
+
+chown BlueFinR. /home/user1/files
+
+ 
+
+
 https://www.monitis.com/blog/25-apache-performance-tuning-tips/
 https://mariadb.com/kb/en/mycnf-128-gb-ram-server/
  mysqladmin -u root -prJqP8ina20 -i 5 processlis
