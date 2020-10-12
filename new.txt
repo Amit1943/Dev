@@ -98,3 +98,15 @@ bucket_name = 'BUCKET'
 # files automatically and upload parts in parallel.
 s3.upload_file(filename, bucket_name, filename)
 
+=========
+Cronjob
+When	Setting
+Every 1 minute	* * * * *
+Every 15 minutes	*/15 * * * *
+Every 30 minutes	*/30 * * * *
+Every 1 hour	0 * * * *
+Every 6 hours	0 */6 * * *
+Every 12 hours	0 */12 * * *
+Once a day	4 0 * * *
+Once a week	4 0 * * 0
+Once a month	4 0 1 * *
