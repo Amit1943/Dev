@@ -1,0 +1,34 @@
+import boto3
+import os
+# #object_key = '.access.txt'
+# Create an S3 client
+s3 = boto3.client(
+    's3',
+    aws_access_key_id = 'XXXXX',
+    aws_secret_access_key = 'xxxxxcLC2RxK'
+)
+
+# #filename = '0120229497.pdf'
+filepath = "/home/move_to_s3_sftp/movetobucket/newtest/"
+bucket_name = 'gbldocs'
+
+dir_list = os.listdir(filepath)
+# # #print(dir_list);
+
+for x in dir_list:
+    if (os.path.isdir(filepath + x) != False):
+        file_list = os.listdir(filepath + x)
+        #print(x)
+        for y in file_list:
+                #print(y)
+                updated_filename = filepath+x+"/"+y
+                os.chdir(filepath+x)
+                print(updated_filename)
+                #exit()
+                s3.upload_file(y, bucket_name, x+"/"+y)
+
+#filename = x.split("/")(2)
+
+# s3.upload_file(filename, bucket_name, filename)
+# Uploads the given file using a managed uploader, which will split up large
+# files automatically and upload parts in parallel.
