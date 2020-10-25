@@ -32,3 +32,36 @@ for x in dir_list:
 # s3.upload_file(filename, bucket_name, filename)
 # Uploads the given file using a managed uploader, which will split up large
 # files automatically and upload parts in parallel.
+
+====
+https://www.developerfiles.com/upload-files-to-s3-with-python-keeping-the-original-folder-structure/
+https://www.developerfiles.com/upload-files-to-s3-with-python-keeping-the-original-folder-structure/
+
+import boto3
+import os
+ 
+def upload_files(path):
+    session = boto3.Session(
+        aws_access_key_id='YOUR_AWS_ACCESS_KEY_ID',
+        aws_secret_access_key='YOUR_AWS_SECRET_ACCESS_KEY_ID',
+        region_name='YOUR_AWS_ACCOUNT_REGION'
+    )
+    s3 = session.resource('s3')
+    bucket = s3.Bucket('YOUR_BUCKET_NAME')
+ 
+    for subdir, dirs, files in os.walk(path):
+        for file in files:
+            full_path = os.path.join(subdir, file)
+            with open(full_path, 'rb') as data:
+                bucket.put_object(Key=full_path[len(path)+1:], Body=data)
+ 
+if __name__ == "__main__":
+    upload_files('/path/to/my/folder')
+The script will ignore the local path when creating the resources on S3, for example if we execute upload_files('/my_data') having the following structure:
+
+1
+2
+/my_data/photos00/image1.jpg
+/my_data/photos01/image1.jpg
+
+
