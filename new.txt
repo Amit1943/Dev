@@ -110,3 +110,7 @@ Every 12 hours	0 */12 * * *
 Once a day	4 0 * * *
 Once a week	4 0 * * 0
 Once a month	4 0 1 * *
+=====
+
+https://dzone.com/articles/file-handling-in-amazon-s3-with-python-boto-librar
+
