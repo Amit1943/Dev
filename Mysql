@@ -1,1 +1,7 @@
 https://www.w3resource.com/mysql/mysql-security.php
+SELECT SUM(TABLE_ROWS)
+   FROM INFORMATION_SCHEMA.TABLES
+   WHERE TABLE_SCHEMA = 'yourDatabaseName';
+   
+   ==
+   sELECT table_name, table_rows FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = 'tablename';
