@@ -74,3 +74,6 @@ path='/home/joonee'
 for n in {0..37}; do cp -R  $file $file'_'$n; done;
 
 find . -maxdepth 1 -type f | head -1000 | xargs cp -t foo_dir
+(find . -maxdepth 1 -type f will look for files, on the current directory only. 
+The output of that will be pipped to the command head that will return the top 1000 results. The result of that will be pipped to xargs that will use the cp command, 
+one per line of results, to copy the files to a destination directory of your choice.)
