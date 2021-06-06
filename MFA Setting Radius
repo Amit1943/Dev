@@ -1,0 +1,253 @@
+ 1  ls
+    2  curl ifconfig.so
+    3  sudo yum -y update
+    4  sudo amazon-linux-extras install epel -y
+    5  sudo yum localinstall http://linotp.org/rpm/el7/linotp/x86_64/Packages/LinOTP_repos-1.1-1.el7.x86_64.rpm -y
+    6  sudo yum install mariadb-server -y
+    7  sudo systemctl enable mariadb
+    8  sudo systemctl start mariadb
+    9  sudo mysql_secure_installation
+   10  sudo yum install -y LinOTP LinOTP_mariadb
+   11  sudo restorecon -Rv /etc/linotp2/
+   12  sudo restorecon -Rv /var/log/linotp
+   13  sudo restorecon -Rv /etc/linotp2/
+   14  sudo linotp-create-mariadb
+   15  sudo yum install yum-plugin-versionlock -y
+   16  sudo yum versionlock python-repoze-who
+   17  udo yum install LinOTP_apache -y
+   18  sudo yum install LinOTP_apache -y
+   19  sudo systemctl enable httpd
+   20  sudo systemctl start httpd
+   21  sudo mv /etc/httpd/conf.d/ssl.conf /etc/httpd/conf.d/ssl.conf.back
+   22  sudo mv /etc/httpd/conf.d/ssl_linotp.conf.template /etc/httpd/conf.d/ssl_linotp.conf
+   23  apachectl configtest
+   24  service httpd status
+   25  sudo htdigest /etc/linotp2/admins "LinOTP2 admin area" admin
+   26  sudo yum install freeradius freeradius-perl freeradius-utils perl-App-cpanminus perl-LWP-Protocol-https perl-Try-Tiny git -y
+   27  df -h
+   28  sudo cpanm Config::File
+   29  sudo mv /etc/raddb/clients.conf /etc/raddb/clients.conf.back
+   30  sudo mv /etc/raddb/users /etc/raddb/users.back
+   31  vi /etc/raddb/clients.conf
+   32  sudo git clone https://github.com/LinOTP/linotp-auth-freeradius-perl.git /usr/share/linotp/linotp-auth-freeradius-perl
+   33  perl {
+   34  filename = /usr/share/linotp/linotp-auth-freeradius-perl/radius_linotp.pm
+   35  perl {   filename = /usr/share/linotp/linotp-auth-freeradius-perl/radius_linotp.pm }
+   
+   36  ll /usr/share/linotp/linotp-auth-freeradius-perl/radius_linotp.pm
+   37  perl
+   38  perl -e {filename = /usr/share/linotp/linotp-auth-freeradius-perl/radius_linotp.pm }
+   39  perl  {filename = '/usr/share/linotp/linotp-auth-freeradius-perl/radius_linotp.pm' }
+   40  perl  { filename = /usr/share/linotp/linotp-auth-freeradius-perl/radius_linotp.pm }
+   41  perl { filename = /usr/share/linotp/linotp-auth-freeradius-perl/radius_linotp.pm }
+   42  vi t.sh
+   43  sh  t.sh
+   44  vi t.sh
+   45  sh  t.sh
+   46  vi t.sh
+   47   ll /etc/raddb/mods-available/perl
+   48  /etc/raddb/mods-available/perl  {filename = /usr/share/linotp/linotp-auth-freeradius-perl/radius_linotp.pm }
+   49  sudo /etc/raddb/mods-available/perl  {filename = /usr/share/linotp/linotp-auth-freeradius-perl/radius_linotp.pm }
+   50  perl {filename = /usr/share/linotp/linotp-auth-freeradius-perl/radius_linotp.pm }
+   51  ll /usr/share/linotp/linotp-auth-freeradius-perl/radius_linotp.pm
+   52  perl { filename = /usr/share/linotp/linotp-auth-freeradius-perl/radius_linotp.pm }
+   53  perl -c 'filename = /usr/share/linotp/linotp-auth-freeradius-perl/radius_linotp.pm'
+   54  #perl -c 'filename = /usr/share/linotp/linotp-auth-freeradius-perl/radius_linotp.pm'
+   55  perl
+   56  vi /etc/raddb/mods-available/perl
+   57  sudo ln -s /etc/raddb/mods-available/perl /etc/raddb/mods-enabled/perl
+   58  vi /etc/linotp2/rlm_perl.ini
+   59  sudo rm /etc/raddb/sites-enabled/{inner-tunnel,default}
+   60  sudo rm /etc/raddb/mods-enabled/eap
+   61  vi /etc/raddb/sites-available/linotp
+   62  sudo ln -s /etc/raddb/sites-available/linotp /etc/raddb/sites-enabled/linotp
+   63  sudo systemctl start radiusd
+   64  systemctl status radiusd.service
+   65  sudo systemctl status  radiusd
+   66  journalctl -xe
+   67  sudo systemctl reload  radiusd
+   68  sudo systemctl restart  radiusd
+   69  ll /var/run/radiusd
+   70  ll /var/run/radiusd/tmp/
+   71  sudo systemctl restart  radiusd
+   72   systemctl restart  radiusd
+   73  ll /var/run/radiusd/tmp/
+   74  #chown apache:apache /var/run/radiusd/tmp/
+   75  ll /var/run/radiusd/tmp/
+   76  ll /var/run/radiusd/
+   77  chown apache:apache /var/run/radiusd/tmp/
+   78   systemctl restart  radiusd
+   79  chown -R apache:apache /var/run/radiusd/tmp/
+   80  chown -R radiusd:radiusd /var/run/radiusd/tmp/
+   81  ll /var/run/radiusd/
+   82   systemctl restart  radiusd
+   83  vi /etc/raddb/clients.conf
+   84   systemctl restart  radiusd
+   85  fg
+   86  vi /etc/raddb/sites-available/linotp
+   87  vi /etc/raddb/mods-available/perl
+   88  #perl filename = /usr/share/linotp/linotp-auth-freeradius-perl/radius_linotp.pm
+   89  systemctl -status
+   90  systemctl status
+   91  systemctl status | grep "free"
+   92  systemctl status | grep "radius"
+   93  systemctl status
+   94  systemctl restart freeradius
+   95  systemctl restart free-radius
+   96  systemctl restart radius
+   97  systemctl restart radiusd
+   98  journalctl -xe
+   99  systemctl restart FreeRADIUS
+  100  journalctl -xe
+  101  locate radius
+  102  journalctl -xe
+  103  locate freeradius
+  104  locate radius
+  105  ll /usr/bin/linotp-auth-radius
+  106  ll /etc/linotp2/apache2.2-example/linotp2-radius
+  107  history
+  108  journalctl -xe
+  109  systemctl restart FreeRADIUS
+  110  systemctl restart radius
+  111  service  restart radius
+  112  vi /etc/raddb/clients.conf
+  113  vi etc/linotp2/rlm_perl.ini
+  114  vi /etc/linotp2/rlm_perl.ini
+  115  systemctl restart radius
+  116  systemctl restart radiusd
+  117  systemctl restart radiusdjournalctl -xe
+  118  journalctl -xe
+  119  fg
+  120  openssl s_client -connect 15.206.209.140:443 -tls1_2
+  121  journalctl -xe
+  122  systemctl restart radiusd
+  123  systemctl start radiusd
+  124  systemctl status radiusd.service
+  125  enable freeradius.service
+  126  ll /etc/systemd/system
+  127  locate radiusd.service
+  128  locate radiusd
+  129  locate  freeradius.servic
+  130  freeradius --version
+  131  radius --version
+  132  locate radius
+  133  sudo systemctl start radiusd
+  134  radiusd --version
+  135  radiusd --v
+  136  radiusd -Versin
+  137  radiusd -Version
+  138  radiusd --v
+  139  radiusd --x
+  140  radiusd --xx
+  141  radiusd --C
+  142  radiusd -C
+  143  radiusd -f
+  144  sudo systemctl start radiusd -f
+  145  sudo systemctl start radiusd -fh
+  146  sudo systemctl start radiusd -fhv
+  147  radiusd -H
+  148  systemctl enable freeradius.service
+  149  systemctl enable radiusd.service
+  150  cat radiusd.service
+  151  locate radiusd.service
+  152  locate radiusd
+  153  ll /var/log
+  154  ll -ltrh /var/log
+  155  ll -ltrh /var/log/messages
+  156  cat /var/log/messages
+  157  /usr/sbin/radiusd -C -lstdout -3
+  158  /usr/sbin/radiusd -C -lstdout
+  159  vi /etc/raddb/clients.conf
+  160  /usr/sbin/radiusd -C -lstdout
+  161  fg
+  162  /usr/sbin/radiusd -C -lstdout
+  163  fg
+  164  /usr/sbin/radiusd -C -lstdout
+  165  sudo systemctl start radiusd
+  166  sudo systemctl status radiusd
+  167  #radtest USERNAME MFACODE PRIVATERADIUSIP:1812 10 SECRETWORD
+  168  #radtest Tech2021 015384 15.206.209.140:1812 10 Tech2021MFA
+  169  radtest Tech2021 015384 15.206.209.140:1812 10 Tech2021MFA
+  170  radtest Tech2021 015384 15.206.209.140:1812 10 Useradd
+  171  radtest Tech2021 015384 15.206.209.140:1812 10 RLNGC7LOZTX645XC46O3SHZ2WTC5LR3I
+  172  radtest Tech2021 202943 15.206.209.140:1812 10 RLNGC7LOZTX645XC46O3SHZ2WTC5LR3I
+  173  cat /etc/raddb/clients.conf
+  174  radtest Tech2021 202943 15.206.209.140:1812 10 India1947
+  175  radtest Tech2021 626659 15.206.209.140:1812 10 India1947
+  176  radtest Tech2021 179183 15.206.209.140:1812 10 India1947
+  177  sudo systemctl status radiusd
+  178  #radtest Tech2021 179183 15.206.209.140:1812 10 India1947
+  179  sudo systemctl status radiusd
+  180  vi /etc/raddb/clients.conf
+  181  #radtest Tech2021 179183 15.206.209.140:1812 10 India1947
+  182  radtest Tech2021 179183 172.31.9.28:1812 10 India1947
+  183  radtest Tech2021 041274 172.31.9.28:1812 10 India1947
+  184  #radtest USERNAME MFACODE PRIVATERADIUSIP:1812 10 SECRETWORD
+  185  radtest Admin 881869 172.31.9.28:1812 10 India1947
+  186  sudo systemctl status radiusd
+  187  sudo systemctl  reload  radiusd
+  188  sudo systemctl  restart  radiusd
+  189  sudo systemctl status radiusd
+  190  radtest admin 193325 172.31.9.28:1812 10 India1947
+  191  #radtest USERNAME MFACODE PRIVATERADIUSIP:1812 10 SECRETWORD
+  192  radtest admin 193325 172.31.9.28:1812 10 India1943
+  193  radtest Tech2021 016362 15.206.209.140:1812 10 India1947
+  194  radtest admin 659655 172.31.9.28:1812 10 India47
+  195  radtest admin 659655 17[dsdsf2.31.9.28:1812 10 India47
+  196  radtest admin 104612 172.31.9.28:1812 10 India47
+  197  radtest admin 104612ss 172.31.9.28:1812 10 India1947
+  198  radtest admin 782238 172.31.9.28:1812 10 India1947
+  199  cat /etc/raddb/clients.conf
+  200  vi /etc/raddb/clients.conf
+  201  sudo systemctl restart  radiusd
+  202  cat  /etc/raddb/clients.conf
+  203  vi  /etc/raddb/clients.conf
+  204  cat  /etc/raddb/clients.conf
+  205  sudo systemctl restart  radiusd
+  206  sudo systemctl status  radiusd
+  207  radtest admin 972575 172.31.9.28:1812 10 1947
+  208  radtest Tech2021 167317 172.31.9.28:1812 10 1947
+  209  #radtest Tech2021 167317 172.31.9.28:1812 10 1947
+  210  sudo systemctl restart  radiusd
+  211  sudo systemctl status  radiusd
+  212  radtest Tech2021 249478 172.31.9.28:1812 10 1947
+  213  radtest Tech2021 653126 172.31.9.28:1812 10 1947
+  214  radtest Tech2021 18335 172.31.9.28:1812 10 1947
+  215  radtest Tech2021 328360 172.31.9.28:1812 10 1947
+  216  radtest Tech2021 586085 172.31.9.28:1812 0 1947
+  217  lsof
+  218  nltp
+  219  lsof | grep -il 1812
+  220  lsof | grep -il 443
+  221  lsof | grep -il "443"
+  222  lsof > y.txt
+  223  vi y.txt
+  224  lsof -c radiusd
+  225  radtest Tech2021 275337 172.31.9.28:1812 0 1947
+  226  radtest Tech2021 725916 127.0.0.1:1812 0 1947
+  227  vi /etc/linotp2/rlm_perl.ini
+  228  sudo systemctl restart  radiusd
+  229  radtest Tech2021 725916 127.0.0.1:1812 0 1947
+  230  radtest Tech2021 937823 172.31.9.28:1812 0 1947
+  231  fg
+  232  cat  /etc/linotp2/rlm_perl.ini
+  233  sudo systemctl restart  radiusd
+  234  radtest Tech2021 859635 172.31.9.28:1812 0 1947
+  235  vi /etc/raddb/clients.conf
+  236  sudo systemctl restart  radiusd
+  237  radtest Tech2021 269377 172.31.9.28:1812 0 1947
+  238  radtest Tech2021 119518 172.31.9.28:1812 0 India1947
+==
+ 1  sudo -i
+    2  sudo service radius status
+    3  sudo service freeradius status
+    4  sudo -i
+    5  sudo service freeradius status
+    6  sudo -i
+    7  sudo -i
+    8  vi /etc/raddb/clients.conf
+    9  ifconfig
+   10  vi /etc/raddb/clients.conf
+   11  sudo -i
+   12  sudo -i
+   13  history
