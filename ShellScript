@@ -34,6 +34,13 @@ tar xzf [backup.tar.gz]
 mysql -u[uname] -p -e "DROP DATABASE [dbname]; CREATE DATABASE [dbname];"
 mysql -u[uname] -p [dbname] < [backupfile.sql]
 
+
+
+===========
+
+
+mysql --user=wibble --password wobble -B -e "select ID,TSLASTUPDATE,STRLOANNUMBER,STRFNAME,STRLNAME,STRCO_FNAME  ..............where strlosusername='Quatrro_PacRes'" | sed "s/'/'/;s/\t/","/g;s/^/"/;s/$/"/;s/\n//g" > vehicle_categories.csv
+
 # Import gzipped database at other location
 mysql -u[uname] -p -e "DROP DATABASE [dbname]; CREATE DATABASE [dbname];"
 zcat [backupfile.sql.gz] | mysql -u[uname] -p [dbname]
