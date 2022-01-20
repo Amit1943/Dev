@@ -1,3 +1,6 @@
+
+test 
+
 #Backup MySQL database as SQL
 
 mysqldump –u[user name] –p[password] [database name] > [dump file]
